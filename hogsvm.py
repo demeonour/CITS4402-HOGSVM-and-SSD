@@ -6,7 +6,7 @@ import argparse
 import imutils
 import datetime
 import cv2
- 
+# Code mainly taken from pyimagesearch.com tutorials
 # parse the argument(s)
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--images", required=True, help="path to images directory")

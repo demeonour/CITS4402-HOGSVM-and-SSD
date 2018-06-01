@@ -10,6 +10,7 @@ import time
 import datetime
 import cv2
 
+#Code mainly taken from 
 #parse the argument(s)
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=False,
@@ -20,12 +21,12 @@ args = vars(ap.parse_args())
 
 # initialize the list of class labels MobileNet SSD was trained to
 # detect, then generate a set of bounding box colors for each class
-CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
+CLASS = ["background", "aeroplane", "bicycle", "bird", "boat",
 	"bottle", "bus", "car", "cat", "chair", "cow", "diningtable",
 	"dog", "horse", "motorbike", "person", "pottedplant", "sheep",
 	"sofa", "train", "tvmonitor"]
 #colors for each classes for bounding boxes to be drawn
-COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
+COLOR = np.random.uniform(0, 255, size=(len(CLASS), 3))
 
 # load the caffe model
 print("[INFO] loading model...")
@@ -82,13 +83,13 @@ while True:
 			(startX, startY, endX, endY) = box.astype("int")
 
 			# draw the bounding box and text on the frame
-			label = "{}: {:.2f}%".format(CLASSES[idx],
+			label = "{}: {:.2f}%".format(CLASS[idx],
 				confidence * 100)
 			cv2.rectangle(frame, (startX, startY), (endX, endY),
-				COLORS[idx], 2)
+				COLOR[idx], 2)
 			y = startY - 15 if startY - 15 > 15 else startY + 15
 			cv2.putText(frame, label, (startX, y),
-				cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
+				cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLOR[idx], 2)
 
 	# show the output frame
 	cv2.imshow("Frame", frame)
@@ -101,11 +102,7 @@ while True:
 	# update the FPS counter
 	fps.update()
 
-# stop the timer and display FPS information
 fps.stop()
-#print("[INFO] elapsed time: {:.2f}".format(fps.elapsed()))
-#print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))
-
 #cleanup
 cv2.destroyAllWindows()
 vs.stop()
