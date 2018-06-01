@@ -6,8 +6,8 @@ import argparse
 import imutils
 import datetime
 import cv2
-# Code mainly taken from pyimagesearch.com tutorials
-# parse the argument(s)
+# Code mainly taken from pyimagesearch.com tutorial, with timer added
+# https://www.pyimagesearch.com/2015/11/09/pedestrian-detection-opencv/
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--images", required=True, help="path to images directory")
 args = vars(ap.parse_args())

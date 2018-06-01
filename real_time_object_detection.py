@@ -10,7 +10,8 @@ import time
 import datetime
 import cv2
 
-#Code mainly taken from 
+#Code mainly taken from https://www.pyimagesearch.com/2017/09/18/real-time-object-detection-with-deep-learning-and-opencv/
+# Args reduced, image path added and timers added
 #parse the argument(s)
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=False,
